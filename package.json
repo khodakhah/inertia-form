@@ -1,0 +1,25 @@
+{
+  "name": "@khodakhah/form-vue",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "",
+  "main": "dist/library.js",
+  "module": "dist/library.mjs",
+  "files": ["dist/*"],
+  "peerDependencies": {
+    "@vuepic/vue-datepicker": "^3.6.8",
+    "vue": "^3.2.21"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c"
+  },
+  "keywords": ["vue", "form-vue"],
+  "author": "Mojtaba Khodakhah",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^3.18.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-vue": "^6.0.0"
+  }
+}
