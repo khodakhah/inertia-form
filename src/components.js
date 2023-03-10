@@ -1,13 +1,14 @@
-import Checkbox from './Components/Checkbox.vue'
-import DatepickerInput from './Components/DatepickerInput.vue'
-import Form from './Components/Form.vue'
-import FormInput from './Components/FormInput.vue'
-import InputError from './Components/InputError.vue'
-import InputLabel from './Components/InputLabel.vue'
-import Layout from './Components/Layout.vue'
-import Select from './Components/Select.vue'
-import TextareaInput from './Components/TextareaInput.vue'
-import TextInput from './Components/TextInput.vue'
+import Checkbox from './components/Checkbox.vue'
+import DatepickerInput from './components/DatepickerInput.vue'
+import Form from './components/Form.vue'
+import FormInput from './components/FormInput.vue'
+import InputError from './components/InputError.vue'
+import InputLabel from './components/InputLabel.vue'
+import Layout from './components/Layout.vue'
+import Select from './components/Select.vue'
+import TextareaInput from './components/TextareaInput.vue'
+import TextInput from './components/TextInput.vue'
+import PrimaryButton from './components/PrimaryButton.vue'
 
 export default {
     Checkbox,
@@ -20,4 +21,5 @@ export default {
     Select,
     TextareaInput,
     TextInput,
+    PrimaryButton,
 }

@@ -5,21 +5,46 @@
   "description": "",
   "main": "dist/library.js",
   "module": "dist/library.mjs",
-  "files": ["dist/*"],
-  "peerDependencies": {
-    "@vuepic/vue-datepicker": "^3.6.8",
-    "vue": "^3.2.21"
-  },
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c"
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
   },
-  "keywords": ["vue", "form-vue"],
+  "keywords": [
+    "vue",
+    "form-vue"
+  ],
   "author": "Mojtaba Khodakhah",
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^18.14.6",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.8",
+    "prettier": "^2.8.4",
     "rollup": "^3.18.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-vue": "^6.0.0"
+    "rollup-plugin-typescript-paths": "^1.4.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.4",
+    "vue": "^3.2.47",
+    "vue-tsc": "^1.2.0"
+  },
+  "peerDependencies": {
+    "@inertiajs/vue3": "^1.0.2",
+    "@vuepic/vue-datepicker": "^3.6.8",
+    "lodash": "^4.17.21",
+    "vue": "^3.2.47"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }

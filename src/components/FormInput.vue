@@ -1,13 +1,13 @@
-<script setup>
-import InputLabel from "@/Components/InputLabel.vue";
-import InputError from "@/Components/InputError.vue";
-import TextInput from "@/Components/TextInput.vue";
-import TextareaInput from "@/Components/TextareaInput.vue";
-import Select from "@/Components/Select.vue";
+<script setup lang="ts">
+import InputLabel from "./InputLabel.vue";
+import InputError from "./InputError.vue";
+import TextInput from "./TextInput.vue";
+import TextareaInput from "./TextareaInput.vue";
+import Select from "./Select.vue";
 import {ref, watch} from "vue";
 import {debounce} from "lodash";
-import Checkbox from "@/Components/Checkbox.vue";
-import DatepickerInput from "@/Components/DatepickerInput.vue";
+import Checkbox from "./Checkbox.vue";
+import DatepickerInput from "./DatepickerInput.vue";
 
 const typeInInputs = [
     'textarea',

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
 
 defineProps(['modelValue']);
@@ -6,9 +6,10 @@ defineProps(['modelValue']);
 defineEmits(['update:modelValue']);
 
 const input = ref(null);
+input.value.
 
 onMounted(() => {
-    if (input.value.hasAttribute('autofocus')) {
+    if (input.value?.hasAttribute('autofocus')) {
         input.value.focus();
     }
 });

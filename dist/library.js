@@ -5,17 +5,8 @@ var Datepicker = require('@vuepic/vue-datepicker');
 require('@vuepic/vue-datepicker/dist/main.css');
 var lodash = require('lodash');
 var vue3 = require('@inertiajs/vue3');
-var PrimaryButton = require('@/Components/PrimaryButton.vue');
-var FormInput = require('@/Components/FormInput.vue');
-var InputLabel = require('@/Components/InputLabel.vue');
-var InputError = require('@/Components/InputError.vue');
-var TextInput = require('@/Components/TextInput.vue');
-var TextareaInput = require('@/Components/TextareaInput.vue');
-var Select = require('@/Components/Select.vue');
-var Checkbox = require('@/Components/Checkbox.vue');
-var DatepickerInput = require('@/Components/DatepickerInput.vue');
 
-var script$9 = {
+var script$a = {
   __name: 'Checkbox',
   props: {
     checked: {
@@ -55,12 +46,12 @@ return (_ctx, _cache) => {
 
 };
 
-script$9.__file = "src/Components/Checkbox.vue";
+script$a.__file = "src/Components/Checkbox.vue";
 
-const _hoisted_1$7 = ["value"];
+const _hoisted_1$8 = ["value"];
 
 
-var script$8 = {
+var script$9 = {
   __name: 'DatepickerInput',
   props: {
     modelValue: String,
@@ -159,7 +150,7 @@ return (_ctx, _cache) => {
         type: "text",
         value: value,
         class: "block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-      }, null, 8 /* PROPS */, _hoisted_1$7)
+      }, null, 8 /* PROPS */, _hoisted_1$8)
     ]),
     _: 1 /* STABLE */
   }, 8 /* PROPS */, ["modelValue", "text-input-options", "min-date", "max-date", "disabled-dates", "allowed-dates", "disabled-week-days", "start-date"]))
@@ -168,134 +159,208 @@ return (_ctx, _cache) => {
 
 };
 
-script$8.__file = "src/Components/DatepickerInput.vue";
+script$9.__file = "src/Components/DatepickerInput.vue";
 
-const _hoisted_1$6 = ["onSubmit"];
-const _hoisted_2$3 = { class: "w-full mb-6" };
+const _hoisted_1$7 = ["type"];
 
-    
-var script$7 = {
-  __name: 'Form',
+
+var script$8 = {
+  __name: 'PrimaryButton',
   props: {
-        inputs: Array|Object,
-        action: String,
-        method: String,
-        layout: Array,
-        onFinish: Function,
-        staticErrors: Object,
-        reset: {
-            type: Boolean,
-            default: true,
-        },
+    type: {
+        type: String,
+        default: 'submit',
     },
-  setup(__props, { expose }) {
+},
+  setup(__props) {
 
-const props = __props;
 
-    
-
-    let firstKey = Array.isArray(props.inputs) ? props.inputs[0].key : Object.keys(props.inputs)[0];
-
-    const getFormData = () => {
-        let data = {};
-        for (let input in props.inputs) {
-            data[props.inputs[input].key] = props.inputs[input].default ?? '';
-        }
-        return data
-    };
-
-    const form = vue3.useForm(getFormData());
-
-    if (props.staticErrors) {
-        form.errors = props.staticErrors;
-    }
-
-    const submit = () => {
-        if (props.method === 'put') {
-            form.put(props.action, {
-                onFinish: () => {
-                    if (props.onFinish) {
-                        props.onFinish(form, getFormData());
-                    }
-                },
-                onSuccess: () => {
-                    form.defaults(getFormData());
-                    if (props.reset) {
-                        form.reset();
-                    }
-                }
-            });
-            return;
-        }
-        form.post(props.action, {
-            onFinish: () => {
-                if (props.onFinish) {
-                    props.onFinish(form, getFormData());
-                }
-            },
-            onSuccess: () => {
-                form.defaults(getFormData());
-                if (props.reset) {
-                    form.reset();
-                }
-            }
-        });
-    };
-
-    expose({
-        form
-    });
 
 return (_ctx, _cache) => {
-  return (vue.openBlock(), vue.createElementBlock("form", {
-    class: "w-full",
-    onSubmit: vue.withModifiers(submit, ["prevent"])
+  return (vue.openBlock(), vue.createElementBlock("button", {
+    type: __props.type,
+    class: "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150"
   }, [
-    vue.renderSlot(_ctx.$slots, "inputs", {
-      inputs: __props.inputs,
-      form: vue.unref(form)
-    }, () => [
-      (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(__props.inputs, (input) => {
-        return vue.renderSlot(_ctx.$slots, input.key, {
-          input: input,
-          form: vue.unref(form),
-          focus: input.key === vue.unref(firstKey)
-        }, () => [
-          vue.createElementVNode("div", _hoisted_2$3, [
-            vue.createVNode(FormInput, {
-              input: input,
-              form: vue.unref(form),
-              focus: input.key === vue.unref(firstKey)
-            }, null, 8 /* PROPS */, ["input", "form", "focus"])
-          ])
-        ])
-      }), 256 /* UNKEYED_FRAGMENT */))
-    ]),
-    vue.renderSlot(_ctx.$slots, "submit", {
-      class: vue.normalizeClass({ 'opacity-25': vue.unref(form).processing }),
-      disabled: vue.unref(form).processing
-    }, () => [
-      vue.createVNode(PrimaryButton, null, {
-        default: vue.withCtx(() => [
-          vue.createTextVNode(" Save ")
-        ]),
-        _: 1 /* STABLE */
-      })
-    ])
-  ], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$6))
+    vue.renderSlot(_ctx.$slots, "default")
+  ], 8 /* PROPS */, _hoisted_1$7))
 }
 }
 
 };
 
-script$7.__file = "src/Components/Form.vue";
+script$8.__file = "src/Components/PrimaryButton.vue";
 
-const _hoisted_1$5 = {
+const _hoisted_1$6 = { class: "block font-medium text-sm text-gray-700" };
+const _hoisted_2$3 = { key: 0 };
+const _hoisted_3$1 = { key: 1 };
+
+
+var script$7 = {
+  __name: 'InputLabel',
+  props: ['value'],
+  setup(__props) {
+
+
+
+return (_ctx, _cache) => {
+  return (vue.openBlock(), vue.createElementBlock("label", _hoisted_1$6, [
+    (__props.value)
+      ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_2$3, vue.toDisplayString(__props.value), 1 /* TEXT */))
+      : (vue.openBlock(), vue.createElementBlock("span", _hoisted_3$1, [
+          vue.renderSlot(_ctx.$slots, "default")
+        ]))
+  ]))
+}
+}
+
+};
+
+script$7.__file = "src/Components/InputLabel.vue";
+
+const _hoisted_1$5 = { class: "text-sm text-red-600" };
+
+
+var script$6 = {
+  __name: 'InputError',
+  props: ['message'],
+  setup(__props) {
+
+
+
+return (_ctx, _cache) => {
+  return vue.withDirectives((vue.openBlock(), vue.createElementBlock("div", null, [
+    vue.createElementVNode("p", _hoisted_1$5, vue.toDisplayString(__props.message), 1 /* TEXT */)
+  ], 512 /* NEED_PATCH */)), [
+    [vue.vShow, __props.message]
+  ])
+}
+}
+
+};
+
+script$6.__file = "src/Components/InputError.vue";
+
+const _hoisted_1$4 = ["value"];
+
+
+var script$5 = {
+  __name: 'TextInput',
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
+  setup(__props) {
+
+
+
+
+
+const input = vue.ref(null);
+
+vue.onMounted(() => {
+    if (input.value.hasAttribute('autofocus')) {
+        input.value.focus();
+    }
+});
+
+return (_ctx, _cache) => {
+  return (vue.openBlock(), vue.createElementBlock("input", {
+    class: "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
+    value: __props.modelValue,
+    onInput: _cache[0] || (_cache[0] = $event => (_ctx.$emit('update:modelValue', $event.target.value))),
+    ref_key: "input",
+    ref: input
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$4))
+}
+}
+
+};
+
+script$5.__file = "src/Components/TextInput.vue";
+
+const _hoisted_1$3 = ["value"];
+
+
+var script$4 = {
+  __name: 'TextareaInput',
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
+  setup(__props) {
+
+
+
+
+
+const input = vue.ref(null);
+
+vue.onMounted(() => {
+    if (input.value.hasAttribute('autofocus')) {
+        input.value.focus();
+    }
+});
+
+return (_ctx, _cache) => {
+  return (vue.openBlock(), vue.createElementBlock("textarea", {
+    class: "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
+    value: __props.modelValue,
+    onInput: _cache[0] || (_cache[0] = $event => (_ctx.$emit('update:modelValue', $event.target.value))),
+    ref_key: "input",
+    ref: input
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$3))
+}
+}
+
+};
+
+script$4.__file = "src/Components/TextareaInput.vue";
+
+const _hoisted_1$2 = ["value"];
+const _hoisted_2$2 = ["value"];
+
+
+var script$3 = {
+  __name: 'Select',
+  props: {
+    modelValue: String,
+    options: Array,
+},
+  emits: ['update:modelValue'],
+  setup(__props) {
+
+
+
+
+
+const input = vue.ref(null);
+
+
+return (_ctx, _cache) => {
+  return (vue.openBlock(), vue.createElementBlock("select", {
+    class: "mt-1 block w-full border-gray-300 rounded",
+    value: __props.modelValue,
+    onChange: _cache[0] || (_cache[0] = $event => (_ctx.$emit('update:modelValue', $event.target.value))),
+    ref_key: "input",
+    ref: input
+  }, [
+    (__props.options)
+      ? (vue.openBlock(true), vue.createElementBlock(vue.Fragment, { key: 0 }, vue.renderList(__props.options, (option) => {
+          return (vue.openBlock(), vue.createElementBlock("option", {
+            value: option.value
+          }, vue.toDisplayString(option.label), 9 /* TEXT, PROPS */, _hoisted_2$2))
+        }), 256 /* UNKEYED_FRAGMENT */))
+      : vue.createCommentVNode("v-if", true)
+  ], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$2))
+}
+}
+
+};
+
+script$3.__file = "src/Components/Select.vue";
+
+const _hoisted_1$1 = {
   key: 0,
   class: "border-gray-200 dark:border-gray-700"
 };
-const _hoisted_2$2 = ["for"];
-const _hoisted_3$1 = {
+const _hoisted_2$1 = ["for"];
+const _hoisted_3 = {
   key: 1,
   class: "flex items-center"
 };
@@ -332,7 +397,7 @@ const _hoisted_9 = [
 ];
 
 
-var script$6 = {
+var script$2 = {
   __name: 'FormInput',
   props: {
     input: Object,
@@ -379,11 +444,11 @@ if (typeInInputs.includes(props.input.type)) {
 
 return (_ctx, _cache) => {
   return (Object.keys(__props.input).length === 0)
-    ? (vue.openBlock(), vue.createElementBlock("hr", _hoisted_1$5))
+    ? (vue.openBlock(), vue.createElementBlock("hr", _hoisted_1$1))
     : (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 1 }, [
         (__props.input.type === 'checkbox')
           ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
-              vue.createVNode(Checkbox, {
+              vue.createVNode(script$a, {
                 id: __props.input.key,
                 type: __props.input.type,
                 modelValue: __props.form[__props.input.key],
@@ -395,10 +460,10 @@ return (_ctx, _cache) => {
               vue.createElementVNode("label", {
                 for: __props.input.key,
                 class: "ml-2 text-sm text-gray-600"
-              }, vue.toDisplayString(__props.input.label), 9 /* TEXT, PROPS */, _hoisted_2$2)
+              }, vue.toDisplayString(__props.input.label), 9 /* TEXT, PROPS */, _hoisted_2$1)
             ], 64 /* STABLE_FRAGMENT */))
           : (['radio'].includes(__props.input.type))
-            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_3$1, [
+            ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_3, [
                 vue.withDirectives(vue.createElementVNode("input", {
                   id: __props.input.key,
                   type: __props.input.type,
@@ -413,7 +478,7 @@ return (_ctx, _cache) => {
                   class: "px-3"
                 }, vue.toDisplayString(__props.input.label), 9 /* TEXT, PROPS */, _hoisted_5)
               ]))
-            : (vue.openBlock(), vue.createBlock(InputLabel, {
+            : (vue.openBlock(), vue.createBlock(script$7, {
                 key: 2,
                 for: __props.input.key,
                 value: __props.input.label
@@ -432,7 +497,7 @@ return (_ctx, _cache) => {
                     'search',
                     'tel',
                     ].includes(__props.input.type))
-          ? (vue.openBlock(), vue.createBlock(TextInput, {
+          ? (vue.openBlock(), vue.createBlock(script$5, {
               key: 3,
               id: __props.input.key,
               type: __props.input.type,
@@ -446,7 +511,7 @@ return (_ctx, _cache) => {
               autofocus: __props.focus
             }, null, 8 /* PROPS */, ["id", "type", "placeholder", "modelValue", "required", "autofocus"]))
           : (__props.input.type === 'date')
-            ? (vue.openBlock(), vue.createBlock(DatepickerInput, {
+            ? (vue.openBlock(), vue.createBlock(script$9, {
                 key: 4,
                 id: __props.input.key,
                 class: "mt-1",
@@ -464,7 +529,7 @@ return (_ctx, _cache) => {
         (__props.input.type === 'ndate')
           ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_6, _hoisted_9))
           : (__props.input.type === 'textarea')
-            ? (vue.openBlock(), vue.createBlock(TextareaInput, {
+            ? (vue.openBlock(), vue.createBlock(script$4, {
                 key: 6,
                 id: __props.input.key,
                 type: __props.input.type,
@@ -477,7 +542,7 @@ return (_ctx, _cache) => {
                 onChange: _cache[10] || (_cache[10] = $event => (__props.onChange(__props.form[__props.input.key])))
               }, null, 8 /* PROPS */, ["id", "type", "modelValue", "required", "autofocus"]))
             : (__props.input.type === 'select')
-              ? (vue.openBlock(), vue.createBlock(Select, {
+              ? (vue.openBlock(), vue.createBlock(script$3, {
                   key: 7,
                   id: __props.input.key,
                   options: __props.options ? __props.options : __props.input.options ?? [],
@@ -487,7 +552,7 @@ return (_ctx, _cache) => {
                   onChange: _cache[12] || (_cache[12] = $event => (__props.onChange(__props.form[__props.input.key])))
                 }, null, 8 /* PROPS */, ["id", "options", "modelValue", "autofocus"]))
               : vue.createCommentVNode("v-if", true),
-        vue.createVNode(InputError, {
+        vue.createVNode(script$6, {
           class: "mt-2",
           message: __props.form.errors[__props.input.key]
         }, null, 8 /* PROPS */, ["message"])
@@ -497,59 +562,132 @@ return (_ctx, _cache) => {
 
 };
 
-script$6.__file = "src/Components/FormInput.vue";
+script$2.__file = "src/Components/FormInput.vue";
 
-const _hoisted_1$4 = { class: "text-sm text-red-600" };
-
-
-var script$5 = {
-  __name: 'InputError',
-  props: ['message'],
-  setup(__props) {
+const _hoisted_1 = ["onSubmit"];
+const _hoisted_2 = { class: "w-full mb-6" };
 
 
+var script$1 = {
+  __name: 'Form',
+  props: {
+  inputs: Array|Object,
+  action: String,
+  method: String,
+  layout: Array,
+  onFinish: Function,
+  staticErrors: Object,
+  reset: {
+    type: Boolean,
+    default: true,
+  },
+},
+  setup(__props, { expose }) {
+
+const props = __props;
+
+
+
+let firstKey = Array.isArray(props.inputs) ? props.inputs[0].key : Object.keys(props.inputs)[0];
+
+const getFormData = () => {
+  let data = {};
+  for (let input in props.inputs) {
+    data[props.inputs[input].key] = props.inputs[input].default ?? '';
+  }
+  return data
+};
+
+const form = vue3.useForm(getFormData());
+
+if (props.staticErrors) {
+  form.errors = props.staticErrors;
+}
+
+const submit = () => {
+  if (props.method === 'put') {
+    form.put(props.action, {
+      onFinish: () => {
+        if (props.onFinish) {
+          props.onFinish(form, getFormData());
+        }
+      },
+      onSuccess: () => {
+        form.defaults(getFormData());
+        if (props.reset) {
+          form.reset();
+        }
+      }
+    });
+    return;
+  }
+  form.post(props.action, {
+    onFinish: () => {
+      if (props.onFinish) {
+        props.onFinish(form, getFormData());
+      }
+    },
+    onSuccess: () => {
+      form.defaults(getFormData());
+      if (props.reset) {
+        form.reset();
+      }
+    }
+  });
+};
+
+expose({
+  form
+});
 
 return (_ctx, _cache) => {
-  return vue.withDirectives((vue.openBlock(), vue.createElementBlock("div", null, [
-    vue.createElementVNode("p", _hoisted_1$4, vue.toDisplayString(__props.message), 1 /* TEXT */)
-  ], 512 /* NEED_PATCH */)), [
-    [vue.vShow, __props.message]
-  ])
+  return (vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+    vue.createTextVNode(vue.toDisplayString(__props.inputs) + " ", 1 /* TEXT */),
+    vue.createElementVNode("form", {
+      class: "w-full",
+      onSubmit: vue.withModifiers(submit, ["prevent"])
+    }, [
+      vue.renderSlot(_ctx.$slots, "inputs", {
+        inputs: __props.inputs,
+        form: vue.unref(form)
+      }, () => [
+        (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(__props.inputs, (input) => {
+          return vue.renderSlot(_ctx.$slots, input.key, {
+            input: input,
+            form: vue.unref(form),
+            focus: input.key === vue.unref(firstKey)
+          }, () => [
+            vue.createElementVNode("div", _hoisted_2, [
+              vue.createVNode(script$2, {
+                input: input,
+                form: vue.unref(form),
+                focus: input.key === vue.unref(firstKey)
+              }, null, 8 /* PROPS */, ["input", "form", "focus"])
+            ])
+          ])
+        }), 256 /* UNKEYED_FRAGMENT */))
+      ]),
+      vue.renderSlot(_ctx.$slots, "submit", {
+        class: vue.normalizeClass({ 'opacity-25': vue.unref(form).processing }),
+        disabled: vue.unref(form).processing
+      }, () => [
+        vue.createVNode(script$8, null, {
+          default: vue.withCtx(() => [
+            vue.createTextVNode(" Submit ")
+          ]),
+          _: 1 /* STABLE */
+        })
+      ])
+    ], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1)
+  ], 64 /* STABLE_FRAGMENT */))
 }
 }
 
 };
 
-script$5.__file = "src/Components/InputError.vue";
+script$1.__file = "src/Components/Form.vue";
 
-const _hoisted_1$3 = { class: "block font-medium text-sm text-gray-700" };
-const _hoisted_2$1 = { key: 0 };
-const _hoisted_3 = { key: 1 };
-
-
-var script$4 = {
-  __name: 'InputLabel',
-  props: ['value'],
-  setup(__props) {
-
-
-
-return (_ctx, _cache) => {
-  return (vue.openBlock(), vue.createElementBlock("label", _hoisted_1$3, [
-    (__props.value)
-      ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_2$1, vue.toDisplayString(__props.value), 1 /* TEXT */))
-      : (vue.openBlock(), vue.createElementBlock("span", _hoisted_3, [
-          vue.renderSlot(_ctx.$slots, "default")
-        ]))
-  ]))
-}
-}
-
-};
-
-script$4.__file = "src/Components/InputLabel.vue";
-
-var script$3 = {
+var script = {
     name: "Layout"
 };
 
@@ -557,135 +695,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return null
 }
 
-script$3.render = render;
-script$3.__file = "src/Components/Layout.vue";
-
-const _hoisted_1$2 = ["value"];
-const _hoisted_2 = ["value"];
-
-
-var script$2 = {
-  __name: 'Select',
-  props: {
-    modelValue: String,
-    options: Array,
-},
-  emits: ['update:modelValue'],
-  setup(__props) {
-
-
-
-
-
-const input = vue.ref(null);
-
-
-return (_ctx, _cache) => {
-  return (vue.openBlock(), vue.createElementBlock("select", {
-    class: "mt-1 block w-full border-gray-300 rounded",
-    value: __props.modelValue,
-    onChange: _cache[0] || (_cache[0] = $event => (_ctx.$emit('update:modelValue', $event.target.value))),
-    ref_key: "input",
-    ref: input
-  }, [
-    (__props.options)
-      ? (vue.openBlock(true), vue.createElementBlock(vue.Fragment, { key: 0 }, vue.renderList(__props.options, (option) => {
-          return (vue.openBlock(), vue.createElementBlock("option", {
-            value: option.value
-          }, vue.toDisplayString(option.label), 9 /* TEXT, PROPS */, _hoisted_2))
-        }), 256 /* UNKEYED_FRAGMENT */))
-      : vue.createCommentVNode("v-if", true)
-  ], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$2))
-}
-}
-
-};
-
-script$2.__file = "src/Components/Select.vue";
-
-const _hoisted_1$1 = ["value"];
-
-
-var script$1 = {
-  __name: 'TextareaInput',
-  props: ['modelValue'],
-  emits: ['update:modelValue'],
-  setup(__props) {
-
-
-
-
-
-const input = vue.ref(null);
-
-vue.onMounted(() => {
-    if (input.value.hasAttribute('autofocus')) {
-        input.value.focus();
-    }
-});
-
-return (_ctx, _cache) => {
-  return (vue.openBlock(), vue.createElementBlock("textarea", {
-    class: "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
-    value: __props.modelValue,
-    onInput: _cache[0] || (_cache[0] = $event => (_ctx.$emit('update:modelValue', $event.target.value))),
-    ref_key: "input",
-    ref: input
-  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$1))
-}
-}
-
-};
-
-script$1.__file = "src/Components/TextareaInput.vue";
-
-const _hoisted_1 = ["value"];
-
-
-var script = {
-  __name: 'TextInput',
-  props: ['modelValue'],
-  emits: ['update:modelValue'],
-  setup(__props) {
-
-
-
-
-
-const input = vue.ref(null);
-
-vue.onMounted(() => {
-    if (input.value.hasAttribute('autofocus')) {
-        input.value.focus();
-    }
-});
-
-return (_ctx, _cache) => {
-  return (vue.openBlock(), vue.createElementBlock("input", {
-    class: "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm",
-    value: __props.modelValue,
-    onInput: _cache[0] || (_cache[0] = $event => (_ctx.$emit('update:modelValue', $event.target.value))),
-    ref_key: "input",
-    ref: input
-  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1))
-}
-}
-
-};
-
-script.__file = "src/Components/TextInput.vue";
+script.render = render;
+script.__file = "src/Components/Layout.vue";
 
 var components = {
-    Checkbox: script$9,
-    DatepickerInput: script$8,
-    Form: script$7,
-    FormInput: script$6,
-    InputError: script$5,
-    InputLabel: script$4,
-    Layout: script$3,
-    Select: script$2,
-    TextareaInput: script$1,
-    TextInput: script,
+    Checkbox: script$a,
+    DatepickerInput: script$9,
+    Form: script$1,
+    FormInput: script$2,
+    InputError: script$6,
+    InputLabel: script$7,
+    Layout: script,
+    Select: script$3,
+    TextareaInput: script$4,
+    TextInput: script$5,
+    PrimaryButton: script$8,
 };
 
 const plugin = {
