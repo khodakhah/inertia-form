@@ -3,13 +3,13 @@
   "version": "0.0.1",
   "type": "module",
   "description": "",
-  "main": "dist/library.js",
-  "module": "dist/library.mjs",
+  "main": "dist/form-vue.cjs",
+  "module": "dist/form-vue.js",
   "files": [
     "dist/*"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vue-tsc",
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"

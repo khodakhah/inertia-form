@@ -1,14 +1,12 @@
 <script setup lang="ts">
-defineProps({
+import type { PropType } from 'vue'
+type ButtonType = 'submit' | 'button' | 'reset'
+let props = defineProps({
   type: {
-    type: String,
+    type: String as PropType<ButtonType>,
     default: 'submit',
-    validator(value) {
-      // The value must match one of these strings
-      return ['submit', 'button', 'reset'].includes(value)
-    }
   },
-});
+})
 </script>
 
 <template>

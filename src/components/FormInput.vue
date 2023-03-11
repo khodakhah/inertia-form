@@ -4,7 +4,7 @@ import InputError from "./InputError.vue";
 import TextInput from "./TextInput.vue";
 import TextareaInput from "./TextareaInput.vue";
 import Select from "./Select.vue";
-import {ref, watch} from "vue";
+import {PropType, ref, watch} from "vue";
 import {debounce} from "lodash";
 import Checkbox from "./Checkbox.vue";
 import DatepickerInput from "./DatepickerInput.vue";
@@ -26,7 +26,7 @@ const typeInInputs = [
 ];
 
 const props = defineProps({
-    input: Object,
+    input: Object as PropType<Input>,
     form: Object,
     focus: {
         type: Boolean,

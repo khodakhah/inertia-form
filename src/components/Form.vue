@@ -2,9 +2,10 @@
 import {useForm} from '@inertiajs/vue3';
 import PrimaryButton from "./PrimaryButton.vue";
 import FormInput from "./FormInput.vue";
+import {PropType} from "vue";
 
 const props = defineProps({
-  inputs: Object,
+  inputs: Object as PropType<Input[]>,
   action: String,
   method: String,
   layout: Array,

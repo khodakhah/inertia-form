@@ -18,12 +18,12 @@ const props = defineProps({
 
 const emits = defineEmits(['update:modelValue'])
 
-const genDate = (value, defaultValue) => {
-    if (value !== undefined && typeof value === 'string' && value !== '') {
+const genDate = (value?: string, defaultValue?: Date | null) => {
+    if (value && value !== '') {
         return new Date(value)
     }
 
-    if (defaultValue !== undefined) {
+    if (defaultValue) {
         return defaultValue
     }
 
@@ -32,18 +32,20 @@ const genDate = (value, defaultValue) => {
 
 const date = ref(genDate(props.modelValue, null))
 
-const updateDate = (modelData) => {
+const updateDate = (modelData: Date) => {
     date.value = modelData
     emits('update:modelValue', modelData?.toISOString() ?? '')
-    props.onChange(date.value)
+    if (props.onChange) {
+      props.onChange(date.value)
+    }
 }
 
 const textInputOptions = ref({
     format: 'dd.MM.yyyy'
 })
 
-const dateFormat = (date) => {
-    if (typeof date !== "object") {
+const dateFormat = (date?: Date) => {
+    if (!date) {
         return ''
     }
     const day = ('0' + (date.getDate())).slice(-2)
@@ -53,14 +55,11 @@ const dateFormat = (date) => {
     return `${day}.${month}.${year}`
 }
 
-const genDateList = (dates) => {
+const genDateList = (dates: string[]) => {
     if (dates && Array.isArray(dates) && dates.length > 0) {
-        let res = []
-        dates.forEach(function (element) {
-            let newDate = genDate(element, null);
-            if (newDate !== null) {
-                res.push(newDate)
-            }
+        let res: Date[] = []
+        dates.forEach(function (element: string) {
+            res.push(genDate(element, null))
         })
         return res
     }
