@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref, Ref, PropType } from 'vue';
+import { SelectOption } from '@/interfaces'
 
 defineProps({
     modelValue: String,

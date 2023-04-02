@@ -3,16 +3,25 @@
 import Datepicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 
-import {onMounted, ref, watch} from 'vue'
+import {onMounted, PropType, ref, watch} from 'vue'
 import {debounce} from "lodash";
 
 const props = defineProps({
     modelValue: String,
     minDate: String,
     maxDate: String,
-    disabledDates: Array,
-    allowedDates: Array,
-    disabledWeekDays: Array,
+    disabledDates: {
+      type: Array as PropType<string[]>,
+      default: [],
+    },
+    allowedDates: {
+      type: Array as PropType<string[]>,
+      default: [],
+    },
+    disabledWeekDays: {
+      type: Array as PropType<string[]>,
+      default: [],
+    },
     onChange: Function
 })
 

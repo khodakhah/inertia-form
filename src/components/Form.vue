@@ -3,11 +3,20 @@ import {useForm} from '@inertiajs/vue3';
 import PrimaryButton from "./PrimaryButton.vue";
 import FormInput from "./FormInput.vue";
 import {PropType} from "vue";
+import { Input } from '@/interfaces'
 
 const props = defineProps({
-  inputs: Object as PropType<Input[]>,
-  action: String,
-  method: String,
+  inputs: Object as PropType<{
+    [key: string]: Input
+  }>,
+  action: {
+    type: String,
+    default: '',
+  },
+  method: {
+    type: String,
+    default: '',
+  },
   layout: Array,
   onFinish: Function,
   staticErrors: Object,
@@ -17,17 +26,20 @@ const props = defineProps({
   },
 })
 
-let firstKey = Array.isArray(props.inputs) ? props.inputs[0].key : Object.keys(props.inputs)[0]
+const firstKey: string = typeof props.inputs !== 'undefined' ? Object.keys(props.inputs)[0] : ''
 
 const getFormData = () => {
-  let data = {}
+  if (typeof props.inputs === 'undefined') {
+    return
+  }
+  let data: { [key: string]: string } = {}
   for (let input in props.inputs) {
     data[props.inputs[input].key] = props.inputs[input].default ?? ''
   }
   return data
 }
 
-const form = useForm(getFormData())
+const form = useForm(getFormData() ?? {})
 
 if (props.staticErrors) {
   form.errors = props.staticErrors
@@ -42,7 +54,7 @@ const submit = () => {
         }
       },
       onSuccess: () => {
-        form.defaults(getFormData())
+        form.defaults(getFormData() ?? {})
         if (props.reset) {
           form.reset()
         }
@@ -57,7 +69,7 @@ const submit = () => {
       }
     },
     onSuccess: () => {
-      form.defaults(getFormData())
+      form.defaults(getFormData() ?? {})
       if (props.reset) {
         form.reset()
       }
