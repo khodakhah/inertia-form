@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [vuePlugin()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src/FormVue', import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   server: {
