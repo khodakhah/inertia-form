@@ -96,7 +96,7 @@ defineExpose({
     </slot>
     <slot name="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
       <PrimaryButton>
-        submitLabel
+        {{ submitLabel }}
       </PrimaryButton>
     </slot>
   </form>

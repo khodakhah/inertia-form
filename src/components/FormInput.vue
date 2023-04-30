@@ -109,7 +109,7 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
                    :required="input.required"
                    :autofocus="focus"
         />
-        <DatepickerInput v-else-if="typeof input === InputDate && input.type === 'date'"
+        <DatepickerInput v-else-if="input as InputDate && input.type === 'date'"
                          :id="input.key"
                          class="mt-1"
                          :min-date="('min' in input) ? input.min : undefined"
