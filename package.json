@@ -27,6 +27,7 @@
     "@types/node": "^18.14.6",
     "@vitejs/plugin-vue": "^4.0.0",
     "autoprefixer": "^10.4.14",
+    "flowbite": "^1.6.5",
     "lodash": "^4.17.21",
     "minimist": "^1.2.8",
     "postcss": "^8.4.23",
