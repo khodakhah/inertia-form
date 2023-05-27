@@ -5,6 +5,7 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
     "./src/*.{vue,js,ts,jsx,tsx}",
     "./dev/*.{vue,js,ts,jsx,tsx}",
+    "./dev/*/*.{vue,js,ts,jsx,tsx}",
     "./node_modules/flowbite/**/*.js"
   ],
   theme: {
