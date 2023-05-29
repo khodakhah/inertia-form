@@ -1,10 +1,10 @@
 {
-  "name": "@khodakhah/form-vue",
+  "name": "@khodakhah/laravel-form-sync",
   "version": "0.0.1",
   "type": "module",
   "description": "",
-  "main": "dist/form-vue.cjs",
-  "module": "dist/form-vue.js",
+  "main": "dist/laravel-form-sync.cjs",
+  "module": "dist/laravel-form-sync.js",
   "files": [
     "dist/*"
   ],
@@ -16,7 +16,7 @@
   },
   "keywords": [
     "vue",
-    "form-vue"
+    "laravel-form-sync"
   ],
   "author": "Mojtaba Khodakhah",
   "license": "ISC",

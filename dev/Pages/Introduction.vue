@@ -1,5 +1,5 @@
 <template>
-    <div class="text-5xl mb-4">Form-Vue</div>
+    <div class="text-5xl mb-4">Laravel-Form-Sync</div>
     <h1 class="text-3xl mb-3">Introduction</h1>
     <p>This is a vue 3 base package to convert a json object to a HTML form.</p>
     <p>This package can be used only as vue component right now.</p>
@@ -13,13 +13,13 @@
         <div>
             <div class="p-4 max-md:border-t-2 md:border-l-2 border-gray-200 border-dashed dark:border-gray-700">
                 <h2 class="text-2xl mb-2">Result</h2>
-                <FormVue :inputs="inputs" submitLabel="Send" />
+                <LaravelFormSync :inputs="inputs" submitLabel="Send" />
             </div>
         </div>
     </div>
 </template>
 <script setup>
-import FormVue from "@/FormVue.vue";
+import LaravelFormSync from "@/LaravelFormSync.vue";
 import Code from "../Components/Code.vue";
 const inputs = [
     {
@@ -46,10 +46,10 @@ const inputs = [
 ];
 
 const example = '<template>\n' +
-    '    <FormVue :inputs="inputs" submitLabel="Send" />\n' +
+    '    <LaravelFormSync :inputs="inputs" submitLabel="Send" />\n' +
     '<\/template>\n' +
     '<script setup>\n' +
-    'import FormVue from "@/FormVue.vue";\n' +
+    'import LaravelFormSync from "@/LaravelFormSync.vue";\n' +
     'const inputs = [\n' +
     '    {\n' +
     '        type: "text",\n' +

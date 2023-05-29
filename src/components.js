@@ -1,4 +1,4 @@
-import FormVue from './FormVue.vue'
+import LaravelFormSync from './LaravelFormSync.vue'
 import Checkbox from './components/Checkbox.vue'
 import DatepickerInput from './components/DatepickerInput.vue'
 import FormInput from './components/FormInput.vue'
@@ -10,7 +10,7 @@ import TextInput from './components/TextInput.vue'
 import PrimaryButton from './components/PrimaryButton.vue'
 
 export default {
-    FormVue,
+    LaravelFormSync: LaravelFormSync,
     Checkbox,
     DatepickerInput,
     FormInput,
