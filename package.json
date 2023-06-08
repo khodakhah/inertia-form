@@ -21,6 +21,7 @@
   "author": "Mojtaba Khodakhah",
   "license": "ISC",
   "devDependencies": {
+    "@inertiajs/vue3": "^1.0.7",
     "@rollup/plugin-typescript": "^11.0.0",
     "@tailwindcss/forms": "^0.5.3",
     "@types/lodash": "^4.14.191",
