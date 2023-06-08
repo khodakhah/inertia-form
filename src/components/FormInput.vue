@@ -138,7 +138,7 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
                        @change="onChange(form[input.key])"/>
         <Select v-else-if="input.type === 'select'"
                 :id="input.key"
-                :options="typeof options !== 'undefined' ? options : ('options' in input ? input.options : [])"
+                :options="options.length > 0 ? options : ('options' in input ? input.options : [])"
                 v-model="form[input.key]"
                 :autofocus="focus"
                 @change="onChange(form[input.key])"/>
