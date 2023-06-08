@@ -19,7 +19,6 @@
 </template>
 <script setup>
 import inputs from './../examples/inputs.js'
-import LaravelFormSync from "@/LaravelFormSync.vue";
 import FormInput from "@/components/FormInput.vue";
 import Code from "../Components/Code.vue";
 import {useForm} from "@inertiajs/vue3";

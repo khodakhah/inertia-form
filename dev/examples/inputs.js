@@ -88,12 +88,6 @@ export default [
         label: "Date"
     },
     {
-        type: "ndate",
-        key: "demo_ndate",
-        default: "01-01-2023",
-        label: "NDate"
-    },
-    {
         type: "textarea",
         key: "demo_textarea",
         default: "",
