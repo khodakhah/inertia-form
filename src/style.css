@@ -2,3 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind form;
+@layer base {
+    h1 {
+        @apply text-4xl;
+        @apply mb-4;
+    }
+    h2 {
+        @apply text-3xl;
+        @apply mb-4;
+    }
+    h3 {
+        @apply text-2xl;
+        @apply mb-4;
+    }
+    h4 {
+        @apply text-xl;
+        @apply mb-3;
+    }
+}
+@layer utilities {
+    table.table-auto {
+        @apply border-collapse;
+        width: 100%;
+    }
+    table.table-auto td, table.table-auto th {
+        @apply px-4 py-2;
+        @apply border border-gray-400;
+    }
+    table.table-auto th {
+        @apply text-left;
+    }
+    ul.ul {
+        @apply list-disc;
+        @apply list-inside;
+        @apply mb-4;
+        @apply ml-4;
+    }
+    code.code {
+        @apply bg-gray-200;
+        @apply px-1;
+        @apply rounded;
+    }
+}

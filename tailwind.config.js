@@ -19,7 +19,13 @@ export default {
         '2xl': '6rem',
       },
     },
-    extend: {},
+    extend: {
+      extend: {
+        height: {
+          '128': '32rem',
+        }
+      }
+    },
   },
   plugins: [
     require('flowbite/plugin'),
