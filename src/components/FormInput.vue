@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import InputLabel from "./InputLabel.vue";
-import InputError from "./InputError.vue";
-import TextInput from "./TextInput.vue";
-import TextareaInput from "./TextareaInput.vue";
-import Select from "./Select.vue";
 import {PropType, ref, watch} from "vue";
 import {debounce} from "lodash";
-import Checkbox from "./Checkbox.vue";
-import DatepickerInput from "./DatepickerInput.vue";
-import {Input, InputDate, InputSelect, SelectOption} from "@/interfaces";
+import type {Input, InputDate, InputSelect, SelectOption} from "@/interfaces";
+import InputLabel from "@/components/InputLabel.vue";
+import InputError from "@/components/InputError.vue";
+import TextInput from "@/components/TextInput.vue";
+import TextareaInput from "@/components/TextareaInput.vue";
+import Select from "@/components/Select.vue";
+import Checkbox from "@/components/Checkbox.vue";
+import DatepickerInput from "@/components/DatepickerInput.vue";
 
 const typeInInputs = [
     'textarea',
@@ -109,7 +109,7 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
                    :required="input.required"
                    :autofocus="focus"
         />
-        <DatepickerInput v-else-if="typeof input === InputDate && input.type === 'date'"
+        <DatepickerInput v-else-if="input as InputDate && input.type === 'date'"
                          :id="input.key"
                          class="mt-1"
                          :min-date="('min' in input) ? input.min : undefined"
@@ -120,13 +120,6 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
                          :disabled-week-days="('disabledWeekDays' in input) ? input.disabledWeekDays : undefined"
                          :on-change="onChange"
                          v-model="form[input.key]"/>
-
-        <div class="relative" v-if="input.type === 'ndate'">
-          <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
-          </div>
-          <input datepicker="" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date">
-        </div>
         <TextareaInput v-else-if="input.type === 'textarea'"
                        :id="input.key"
                        :type="input.type"
@@ -138,7 +131,7 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
                        @change="onChange(form[input.key])"/>
         <Select v-else-if="input.type === 'select'"
                 :id="input.key"
-                :options="typeof options !== 'undefined' ? options : ('options' in input ? input.options : [])"
+                :options="options.length > 0 ? options : ('options' in input ? input.options : [])"
                 v-model="form[input.key]"
                 :autofocus="focus"
                 @change="onChange(form[input.key])"/>

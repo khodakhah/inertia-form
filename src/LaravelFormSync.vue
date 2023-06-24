@@ -3,9 +3,13 @@ import {useForm} from '@inertiajs/vue3';
 import PrimaryButton from "./components/PrimaryButton.vue";
 import FormInput from "./components/FormInput.vue";
 import {PropType} from "vue";
-import { Input } from "@/interfaces";
+import type { Input } from "@/interfaces";
 
 const props = defineProps({
+  submitLabel: {
+    type: String,
+    default: 'Submit'
+  },
   inputs: Object as PropType<{
     [key: string]: Input
   }>,
@@ -17,7 +21,6 @@ const props = defineProps({
     type: String,
     default: '',
   },
-  layout: Array,
   onFinish: Function,
   staticErrors: Object,
   reset: {
@@ -93,7 +96,7 @@ defineExpose({
     </slot>
     <slot name="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
       <PrimaryButton>
-        Submit
+        {{ submitLabel }}
       </PrimaryButton>
     </slot>
   </form>

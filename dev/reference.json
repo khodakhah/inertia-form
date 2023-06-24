@@ -1,0 +1,28 @@
+[
+  {
+    "title": "General",
+    "inputs": [
+      {
+        "type": "text",
+        "key": "demo_text",
+        "default": "",
+        "label": "Name",
+        "placeholder": "Enter your full name"
+      },
+      {
+        "type": "email",
+        "key": "demo_email",
+        "default": "",
+        "label": "Email",
+        "placeholder": "Enter your email address"
+      },
+      {
+        "type": "tel",
+        "key": "demo_tel",
+        "default": "",
+        "label": "Phone",
+        "placeholder": "Enter your phone number"
+      }
+    ]
+  }
+]

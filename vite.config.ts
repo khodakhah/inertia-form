@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [vuePlugin()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src/FormVue', import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   server: {
@@ -24,8 +24,8 @@ export default defineConfig({
     reportCompressedSize: true,
     lib: {
       entry: resolve(__dirname, "src/main.ts"),
-      name: "FormVue",
-      fileName: "form-vue",
+      name: "LaravelFormSync",
+      fileName: "laravel-form-sync",
       formats: ["es", "cjs"],
     },
     rollupOptions: {
