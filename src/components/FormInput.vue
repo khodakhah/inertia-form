@@ -91,7 +91,7 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
                     'email',
                     'number',
                     'url',
-                    // 'date',
+                    'date',
                     'datetime-local',
                     'month',
                     'week',
@@ -109,15 +109,15 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
                    :required="input.required"
                    :autofocus="focus"
         />
-        <DatepickerInput v-else-if="input as InputDate && input.type === 'date'"
+        <DatepickerInput v-else-if="input as InputDate && input.type === 'datepicker'"
                          :id="input.key"
                          class="mt-1"
-                         :min-date="('min' in input) ? input.min : undefined"
-                         :max-date="('max' in input) ? input.max : undefined"
-                         :placeholder="('placeholder' in input) ? input.placeholder : undefined"
-                         :allowed-dates="('allowed' in input) ? input.allowed : undefined"
-                         :disabled-dates="('disabled' in input) ? input.disabled : undefined"
-                         :disabled-week-days="('disabledWeekDays' in input) ? input.disabledWeekDays : undefined"
+                         :min-date="('min' in input) ? input.min : null"
+                         :max-date="('max' in input) ? input.max : null"
+                         :placeholder="input?.placeholder ?? ''"
+                         :allowed-dates="('allowed' in input) ? input.allowed : []"
+                         :disabled-dates="('disabled' in input) ? input.disabled : []"
+                         :disabled-week-days="('disabledWeekDays' in input) ? input.disabledWeekDays : []"
                          :on-change="onChange"
                          v-model="form[input.key]"/>
         <TextareaInput v-else-if="input.type === 'textarea'"

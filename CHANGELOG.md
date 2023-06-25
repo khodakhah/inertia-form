@@ -1,3 +1,4 @@
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -10,8 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Local setup to test package
 - Add webpage documentation
+- Date enter in input of datepicker
+- Define datepicker date format
 
 ### Fixed
 - Duplicate main component
+- Datepicker disabled dates
 
 - Changelog
