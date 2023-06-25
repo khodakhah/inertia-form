@@ -34,6 +34,10 @@ const props = defineProps({
     type: Array as PropType<string[]>,
     default: [],
   },
+  format: {
+    type: String,
+    default: 'yyyy-mm-dd',
+  },
   onChange: Function
 })
 
@@ -80,20 +84,40 @@ function createDateFromCustomFormat(dateString: string, format: string): Date | 
 
   return date;
 }
+function convertDateToCustomFormat(date: Date, format: string): string {
+  const year: number = date.getFullYear();
+  const month: number = date.getMonth() + 1; // Months are zero-based in JavaScript Date object
+  const day: number = date.getDate();
+
+  const formatParts: string[] = format.toLowerCase().split(/[^a-z]+/);
+
+  const dateValues: { [key: string]: string } = {
+    'yyyy': year.toString(),
+    'mm': padZero(month),
+    'dd': padZero(day)
+  };
+
+  let formattedDate: string = format;
+  for (const formatPart of formatParts) {
+    formattedDate = formattedDate.replace(formatPart, dateValues[formatPart]);
+  }
+
+  return formattedDate;
+}
+
+function padZero(num: number): string {
+  return num.toString().padStart(2, '0');
+}
 
 const textInputOptions = ref({
-  format: 'dd.MM.yyyy'
+  format: props.format,
 })
 
 const dateFormat = (date?: Date) => {
   if (!date) {
     return ''
   }
-  const day = ('0' + (date.getDate())).slice(-2)
-  const month = ('0' + (date.getMonth() + 1)).slice(-2)
-  const year = date.getFullYear()
-
-  return `${day}.${month}.${year}`
+  return convertDateToCustomFormat(date, textInputOptions.value.format)
 }
 
 const date = ref(genDate(props.modelValue, null))
