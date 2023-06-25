@@ -8,8 +8,20 @@ import {debounce} from "lodash";
 
 const props = defineProps({
     modelValue: String,
-    minDate: String,
-    maxDate: String,
+    id: String,
+    class: String,
+    placeholder: {
+      type: String,
+      default: '',
+    },
+    minDate: {
+      type: String || null,
+      defualt: null,
+    },
+    maxDate: {
+      type: String || null,
+      defualt: null,
+    },
     disabledDates: {
       type: Array as PropType<string[]>,
       default: [],
@@ -32,14 +44,11 @@ const genDate = (value?: string, defaultValue?: Date | null) => {
         return new Date(value)
     }
 
-    if (defaultValue) {
-        return defaultValue
-    }
-
-    return new Date()
+    return defaultValue ?? null
 }
 
 const date = ref(genDate(props.modelValue, null))
+const placeholderRef = ref(props.placeholder)
 
 const updateDate = (modelData: Date) => {
     date.value = modelData
@@ -92,10 +101,11 @@ watch(() => props.modelValue, (value) => {
                 :allowed-dates="genDateList(allowedDates)"
                 :disabled-week-days="disabledWeekDays"
                 :start-date="genDate(maxDate, null) ?? genDate(minDate, null) ?? genDate()"
-                prevent-min-max-navigation
+                :prevent-min-max-navigation="genDate(minDate, null) && genDate(maxDate, null)"
                 auto-apply>
         <template #dp-input="{ value, onInput, onEnter, onTab, onClear }">
-            <input type="text" :value="value" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"/>
+            <input type="text" :value="value" :placeholder="placeholderRef" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"/>
         </template>
     </Datepicker>
+  {{placeholderRef}}
 </template>

@@ -28,6 +28,13 @@ export default [
         placeholder: "Placeholder text"
     },
     {
+        type: "date",
+        key: "demo_date",
+        default: "",
+        label: "Date",
+        placeholder: "Placeholder text"
+    },
+    {
         type: "datetime-local",
         key: "demo_datetime_local",
         default: "",
@@ -82,12 +89,6 @@ export default [
         label: "Radio"
     },
     {
-        type: "date",
-        key: "demo_date",
-        default: "01-01-2023",
-        label: "Date"
-    },
-    {
         type: "textarea",
         key: "demo_textarea",
         default: "",
@@ -109,5 +110,12 @@ export default [
                 label: "Option 2"
             }
         ]
-    }
+    },
+    {
+        type: "datepicker",
+        key: "demo_datepicker",
+        default: "01-01-2023",
+        label: "Datepicker",
+        placeholder: "Placeholder text"
+    },
 ]
