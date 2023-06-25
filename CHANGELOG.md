@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Local setup to test package
 - Add webpage documentation
+- Date enter in input of datepicker
 
 ### Fixed
 - Duplicate main component
