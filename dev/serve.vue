@@ -63,7 +63,7 @@ const routes = {
 
 const loadPage = () => {
     currentPath.value = window.location.hash
-    document.title = 'laravel-form-sync | ' + (routes[currentPath.value.slice(1) || '/'].title || '404')
+    document.title = 'inertia-form | ' + (routes[currentPath.value.slice(1) || '/'].title || '404')
 }
 
 onMounted(function () {

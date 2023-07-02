@@ -24,8 +24,8 @@ export default defineConfig({
     reportCompressedSize: true,
     lib: {
       entry: resolve(__dirname, "src/main.ts"),
-      name: "LaravelFormSync",
-      fileName: "laravel-form-sync",
+      name: "InertiaForm",
+      fileName: "inertia-form",
       formats: ["es", "cjs"],
     },
     rollupOptions: {
