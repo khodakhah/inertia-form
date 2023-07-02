@@ -3,13 +3,13 @@
   <p class="mb-2">Here you can find out how works the package.</p>
   <h2 class="text-2xl mb-3">Install</h2>
   <Code lang="javascript" class="mb-4">
-    npm install khodakhah/laravel-form-sync
+    npm install khodakhah/inertia-form
   </Code>
 
   <h2 class="text-3xl mb-4">Usage</h2>
-  <p class="mb-2">By component <strong>LaravelFormSync</strong> you can define a form. You need only pass list of
+  <p class="mb-2">By component <strong>InertiaForm</strong> you can define a form. You need only pass list of
     inputs.</p>
-  <Code class="mb-2">{{ '<LaravelFormSync :inputs="inputs"/>' }}</Code>
+  <Code class="mb-2">{{ '<InertiaForm :inputs="inputs"/>' }}</Code>
   <p>The element have bellow properties to configure your form:</p>
   <ul class="ul">
     <li>submitLabel</li>
@@ -53,7 +53,7 @@
 </template>
 <script setup>
 import Code from '../Components/Code.vue'
-import LaravelFormSync from '@/LaravelFormSync.vue'
+import InertiaForm from '@/InertiaForm.vue'
 import FormInput from '@/components/FormInput.vue'
 const sampleInput = {
   type: "email",

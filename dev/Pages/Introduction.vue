@@ -1,5 +1,5 @@
 <template>
-  <div class="text-5xl mb-4">Laravel-Form-Sync</div>
+  <div class="text-5xl mb-4">inertia-form</div>
   <h1 class="text-3xl mb-3">Introduction</h1>
   <p>This is a <strong>vue3</strong> base package to convert a json object to an <strong>InertiaJS</strong> form.</p>
   <p>This package can be used only as vue component.</p>
@@ -13,13 +13,13 @@
     <div>
       <div class="p-4 max-md:border-t-2 md:border-l-2 border-gray-200 border-dashed dark:border-gray-700">
         <h2 class="text-2xl mb-2">Result</h2>
-        <LaravelFormSync :inputs="inputs" submitLabel="Send"/>
+        <InertiaForm :inputs="inputs" submitLabel="Send"/>
       </div>
     </div>
   </div>
 </template>
 <script setup>
-import LaravelFormSync from '@/LaravelFormSync.vue'
+import InertiaForm from '@/InertiaForm.vue'
 import Code from '../Components/Code.vue'
 
 const inputs = [
@@ -47,10 +47,10 @@ const inputs = [
 ]
 
 const example = '<template>\n' +
-    '    <LaravelFormSync :inputs="inputs" submitLabel="Send" />\n' +
+    '    <InertiaForm :inputs="inputs" submitLabel="Send" />\n' +
     '<\/template>\n' +
     '<script setup>\n' +
-    'import LaravelFormSync from "@/LaravelFormSync.vue";\n' +
+    'import InertiaForm from "@/InertiaForm.vue";\n' +
     'const inputs = [\n' +
     '    {\n' +
     '        type: "text",\n' +

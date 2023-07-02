@@ -1,6 +1,6 @@
 <template>
   <h2>Form</h2>
-  <p>The form component is <code class="code">LaravelFormSync</code></p>
+  <p>The form component is <code class="code">InertiaForm</code></p>
   <p>The form component have the following properties:</p>
   <table class="table-auto mt-3 mb-4">
     <tbody>
@@ -276,14 +276,14 @@
       <Code class="overflow-y-auto md:h-[85rem]">{{ inputs }}</Code>
     </div>
     <div class="mb-4 p-4 border rounded-lg">
-      <LaravelFormSync :inputs="inputs" :on-submit="fakeSubmit"/>
+      <InertiaForm :inputs="inputs" :on-submit="fakeSubmit"/>
     </div>
   </div>
 </template>
 <script setup>
 import Code from '../Components/Code.vue'
 import inputs from '../examples/inputs.js'
-import LaravelFormSync from '@/LaravelFormSync.vue'
+import InertiaForm from '@/InertiaForm.vue'
 const fakeSubmit = (form, defaultData) => {
   let result = ''
   for (const [key, value] of Object.entries(form.data())) {

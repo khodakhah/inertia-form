@@ -1,10 +1,10 @@
 {
-  "name": "@khodakhah/laravel-form-sync",
+  "name": "@khodakhah/inertia-form",
   "version": "0.0.1",
   "type": "module",
   "description": "",
-  "main": "dist/laravel-form-sync.cjs",
-  "module": "dist/laravel-form-sync.js",
+  "main": "dist/inertia-form.cjs",
+  "module": "dist/inertia-form.js",
   "files": [
     "dist/*"
   ],
@@ -16,7 +16,7 @@
   },
   "keywords": [
     "vue",
-    "laravel-form-sync"
+    "inertia-form"
   ],
   "author": "Mojtaba Khodakhah",
   "license": "ISC",
