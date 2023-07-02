@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, Ref } from 'vue'
+import { ref, Ref, PropType } from 'vue'
+import type {SelectOption} from "@/interfaces";
 
 const props = defineProps({
   id: String,

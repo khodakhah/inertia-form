@@ -15,12 +15,12 @@ const props = defineProps({
     default: '',
   },
   minDate: {
-    type: String || null,
-    defualt: null,
+    type: [String, null] as PropType<string | null>,
+    default: null,
   },
   maxDate: {
-    type: String || null,
-    defualt: null,
+    type: [String, null] as PropType<string | null>,
+    default: null,
   },
   disabledDates: {
     type: Array as PropType<string[]>,
@@ -43,7 +43,7 @@ const props = defineProps({
 
 const emits = defineEmits(['update:modelValue'])
 
-const genDate = (value?: string, defaultValue?: Date | null) => {
+const genDate = (value?: string | null, defaultValue?: Date | null) => {
   if (value && value !== '') {
     return new Date(value)
   }
@@ -167,13 +167,13 @@ watch(dateInput, debounce((value) => {
               :format="dateFormat"
               text-input
               :text-input-options="textInputOptions"
-              :min-date="genDate(minDate, null)"
-              :max-date="genDate(maxDate, null)"
+              :min-date="genDate(minDate, null) ?? undefined"
+              :max-date="genDate(maxDate, null) ?? undefined"
               :disabled-dates="genDateList(disabledDates)"
               :allowed-dates="genDateList(allowedDates)"
               :disabled-week-days="disabledWeekDays"
-              :start-date="genDate(maxDate, null) ?? genDate(minDate, null) ?? genDate()"
-              :prevent-min-max-navigation="genDate(minDate, null) && genDate(maxDate, null)"
+              :start-date="genDate(maxDate, null) ?? genDate(minDate, null) ?? undefined"
+              :prevent-min-max-navigation="genDate(minDate, null) !== null && genDate(maxDate, null) !== null"
               auto-apply>
     <template #dp-input="{ value, onInput, onEnter, onTab, onClear }">
       <input v-model="dateInput" type="text" :id="id" :placeholder="placeholderRef" :class="class"
