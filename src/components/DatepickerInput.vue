@@ -144,7 +144,10 @@ const genDateList = (dates: string[]) => {
   if (dates && Array.isArray(dates) && dates.length > 0) {
     let res: Date[] = []
     dates.forEach(function (element: string) {
-      res.push(genDate(element, null))
+      let generatedDate = genDate(element, null)
+      if (generatedDate !== null) {
+        res.push(generatedDate)
+      }
     })
     return res
   }
