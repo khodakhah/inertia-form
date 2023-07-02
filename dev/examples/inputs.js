@@ -77,6 +77,13 @@ export default [
         placeholder: "Placeholder text"
     },
     {
+        type: "textarea",
+        key: "demo_textarea",
+        default: "",
+        label: "Textarea",
+        placeholder: "Placeholder text"
+    },
+    {
         type: "checkbox",
         key: "demo_checkbox",
         default: true,
@@ -85,15 +92,18 @@ export default [
     {
         type: "radio",
         key: "demo_radio",
-        default: true,
-        label: "Radio"
-    },
-    {
-        type: "textarea",
-        key: "demo_textarea",
-        default: "",
-        label: "Textarea",
-        placeholder: "Placeholder text"
+        label: "Radio",
+        default: "2",
+        options: [
+            {
+                value: "1",
+                label: "Option 1"
+            },
+            {
+                value: "2",
+                label: "Option 2"
+            }
+        ]
     },
     {
         type: "select",

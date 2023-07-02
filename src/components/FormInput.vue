@@ -7,6 +7,7 @@ import InputError from "@/components/InputError.vue";
 import TextInput from "@/components/TextInput.vue";
 import TextareaInput from "@/components/TextareaInput.vue";
 import Select from "@/components/Select.vue";
+import RadioInput from "@/components/RadioInput.vue";
 import Checkbox from "@/components/Checkbox.vue";
 import DatepickerInput from "@/components/DatepickerInput.vue";
 
@@ -75,15 +76,6 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
               @change="onChange"/>
           <label :for="input.key" class="ml-2 text-sm text-gray-600">{{input.label}}</label>
         </template>
-        <div v-else-if="['radio'].includes(input.type)" class="flex items-center">
-          <input
-              :id="input.key"
-              :type="input.type"
-              v-model="form[input.key]"
-              @keyup="value = form[input.key]"
-              @change="value = form[input.key]"/>
-          <label :for="input.key" class="px-3">{{ input.label }}</label>
-        </div>
         <InputLabel v-else :for="input.key" :value="input.label"/>
         <TextInput v-if="[
                     'text',
@@ -109,17 +101,6 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
                    :required="input.required"
                    :autofocus="focus"
         />
-        <DatepickerInput v-else-if="input as InputDate && input.type === 'datepicker'"
-                         :id="input.key"
-                         class="mt-1"
-                         :min-date="('min' in input) ? input.min : null"
-                         :max-date="('max' in input) ? input.max : null"
-                         :placeholder="input?.placeholder ?? ''"
-                         :allowed-dates="('allowed' in input) ? input.allowed : []"
-                         :disabled-dates="('disabled' in input) ? input.disabled : []"
-                         :disabled-week-days="('disabledWeekDays' in input) ? input.disabledWeekDays : []"
-                         :on-change="onChange"
-                         v-model="form[input.key]"/>
         <TextareaInput v-else-if="input.type === 'textarea'"
                        :id="input.key"
                        :type="input.type"
@@ -135,6 +116,21 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
                 v-model="form[input.key]"
                 :autofocus="focus"
                 @change="onChange(form[input.key])"/>
+        <RadioInput v-else-if="['radio'].includes(input.type)"
+                    :id="input.key"
+                    :options="options.length > 0 ? options : ('options' in input ? input.options : [])"
+                    v-model="form[input.key]"/>
+        <DatepickerInput v-else-if="input as InputDate && input.type === 'datepicker'"
+                         :id="input.key"
+                         class="mt-1"
+                         :min-date="('min' in input) ? input.min : null"
+                         :max-date="('max' in input) ? input.max : null"
+                         :placeholder="input?.placeholder ?? ''"
+                         :allowed-dates="('allowed' in input) ? input.allowed : []"
+                         :disabled-dates="('disabled' in input) ? input.disabled : []"
+                         :disabled-week-days="('disabledWeekDays' in input) ? input.disabledWeekDays : []"
+                         :on-change="onChange"
+                         v-model="form[input.key]"/>
         <InputError class="mt-2" :message="form.errors[input.key]"/>
       </template>
     </template>

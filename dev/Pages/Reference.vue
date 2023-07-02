@@ -276,7 +276,7 @@
       <Code class="overflow-y-auto md:h-[85rem]">{{ inputs }}</Code>
     </div>
     <div class="mb-4 p-4 border rounded-lg">
-      <LaravelFormSync :inputs="inputs"/>
+      <LaravelFormSync :inputs="inputs" :on-submit="fakeSubmit"/>
     </div>
   </div>
 </template>
@@ -284,4 +284,11 @@
 import Code from '../Components/Code.vue'
 import inputs from '../examples/inputs.js'
 import LaravelFormSync from '@/LaravelFormSync.vue'
+const fakeSubmit = (form, defaultData) => {
+  let result = ''
+  for (const [key, value] of Object.entries(form.data())) {
+    result += `${key}: ${value}\n`
+  }
+  alert(result)
+}
 </script>
