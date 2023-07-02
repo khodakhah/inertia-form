@@ -13,9 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add webpage documentation
 - Date enter in input of datepicker
 - Define datepicker date format
+- Options attribute for radio to create radio select input
+- `onSubmit` event for form component
 
 ### Fixed
 - Duplicate main component
 - Datepicker disabled dates
+- Single radio behavior
 
 - Changelog

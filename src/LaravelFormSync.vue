@@ -21,6 +21,7 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  onSubmit: Function,
   onFinish: Function,
   staticErrors: Object,
   reset: {
@@ -49,6 +50,10 @@ if (props.staticErrors) {
 }
 
 const submit = () => {
+  if (props.onSubmit) {
+    props.onSubmit(form, getFormData())
+    return;
+  }
   if (props.method === 'put') {
     form.put(props.action, {
       onFinish: () => {
