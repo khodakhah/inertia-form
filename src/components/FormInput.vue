@@ -129,6 +129,7 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
                          :allowed-dates="('allowed' in input) ? input.allowed : []"
                          :disabled-dates="('disabled' in input) ? input.disabled : []"
                          :disabled-week-days="('disabledWeekDays' in input) ? input.disabledWeekDays : []"
+                         :format="('format' in input) ? input.format : 'yyyy-mm-dd'"
                          :on-change="onChange"
                          v-model="form[input.key]"/>
         <InputError class="mt-2" :message="form.errors[input.key]"/>

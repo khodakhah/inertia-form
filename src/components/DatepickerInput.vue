@@ -113,7 +113,7 @@ const textInputOptions = ref({
   format: props.format,
 })
 
-const dateFormat = (date?: Date) => {
+const dateFormat = (date?: Date): string => {
   if (!date) {
     return ''
   }
@@ -167,7 +167,7 @@ watch(dateInput, debounce((value) => {
   <Datepicker v-model="date"
               @update:model-value="updateDate"
               :enable-time-picker="false"
-              :format="dateFormat"
+              :format="dateFormat()"
               text-input
               :text-input-options="textInputOptions"
               :min-date="genDate(minDate, null) ?? undefined"

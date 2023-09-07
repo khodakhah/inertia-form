@@ -5,8 +5,23 @@
   "description": "",
   "main": "dist/inertia-form.cjs",
   "module": "dist/inertia-form.js",
+  "exports": {
+    ".": {
+      "import": "./dist/inertia-form.js",
+      "require": "./dist/inertia-form.cjs"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
+  },
+  "types": "index.d.ts",
   "files": [
-    "dist/*"
+    "dist/*",
+    "src/**/*",
+    "index.d.ts",
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
     "test": "vue-tsc",

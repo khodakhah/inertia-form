@@ -17,6 +17,7 @@ export interface InputDate extends Input{
     allowed: string[],
     disabled: string[],
     disabledWeekDays: string[],
+    format: string,
 }
 
 export interface SelectOption {
