@@ -1,4 +1,4 @@
-import {DefineComponent} from "vue";
+import {DefineComponent, ComputedOptions, ComponentOptionsMixin} from "vue";
 
 export interface InertiaFormProps {
     submitLabel: string,
