@@ -6,9 +6,9 @@ import InputLabel from "@/components/InputLabel.vue";
 import InputError from "@/components/InputError.vue";
 import TextInput from "@/components/TextInput.vue";
 import TextareaInput from "@/components/TextareaInput.vue";
-import Select from "@/components/Select.vue";
+import SelectInput from "@/components/SelectInput.vue";
 import RadioInput from "@/components/RadioInput.vue";
-import Checkbox from "@/components/Checkbox.vue";
+import CheckboxInput from "@/components/CheckboxInput.vue";
 import DatepickerInput from "@/components/DatepickerInput.vue";
 
 const typeInInputs = [
@@ -67,7 +67,7 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
       <hr v-if="Object.keys(input).length === 0" class="border-gray-200 dark:border-gray-700"/>
       <template v-else>
         <template v-if="input.type === 'checkbox'">
-          <Checkbox
+          <CheckboxInput
               :id="input.key"
               :type="input.type"
               v-model="form[input.key]"
@@ -110,7 +110,7 @@ if (typeof props.form !== 'undefined' && typeof props.input !== 'undefined') {
                        :autofocus="focus"
                        @keyup="value = form[input.key]"
                        @change="onChange(form[input.key])"/>
-        <Select v-else-if="input.type === 'select'"
+        <SelectInput v-else-if="input.type === 'select'"
                 :id="input.key"
                 :options="options.length > 0 ? options : ('options' in input ? input.options : [])"
                 v-model="form[input.key]"
